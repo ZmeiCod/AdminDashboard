@@ -9,7 +9,8 @@ import { SHOP_ROUTE } from "../utils/consts";
 
 const Auth = observer(() => {
   const numbers = process.env.REACT_APP_NUMBER;
-  const test = process.env.TEST
+  const test = process.env.REACT_APP_TEST
+  const testing = process.env.REACT_APP_TESTT
   const { user } = useContext(Context);
   const history = useNavigate();
   const [email, setEmail] = useState("");
@@ -17,6 +18,7 @@ const Auth = observer(() => {
   const [number, setNumber] = useState("");
   
   console.log(test)
+  console.log(testing)
 
   const click = async () => {
     try {
