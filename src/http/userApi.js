@@ -24,7 +24,7 @@ export const check = async () => {
     return jwtDecode(data.token);
   } catch (error) {
     if (error.response.status === 401) {
-      setInterval(() => (window.location.href = "/login"), 60000);
+      setInterval(() => (window.location.href = "/login"), 300000);
     }
   }
 };
