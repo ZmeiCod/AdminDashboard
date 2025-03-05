@@ -49,7 +49,7 @@ const ProductPage = observer(() => {
               style={{ borderRadius: "50px" }}
               width={500}
               height={500}
-              src={process.env.REACT_APP_API_URL + product.image}
+              src={process.env.REACT_APP_API_URL + "api/static/" + product.image}
             />
           </Col>
           <Col md={5} className="d-flex flex-column align-items-center">

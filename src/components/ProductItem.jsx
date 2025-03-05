@@ -20,7 +20,7 @@ const ProductItem = ({ product }) => {
         <Image
           className="product-item-image"
           style={{ height: 150 }}
-          src={process.env.REACT_APP_API_URL + img}
+          src={process.env.REACT_APP_API_URL + "api/static/"+ img}
         />
         <div className="d-flex justify-content-between align-items-center">
           <div>{product.name}</div>
