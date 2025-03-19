@@ -1,0 +1,28 @@
+@font-face {
+  font-family: "KanitCyrillic";
+  src: url(../src/fonts/KanitCyrillic/KanitCyrillic.ttf);
+}
+@font-face {
+  font-family: "CygreSemiBold";
+  src: url(../src/fonts/CygreSemiBold/CygreSemiBold.ttf);
+}
+@import "tailwindcss";
+
+:root {
+  background-size: 50px;
+  background-image: url(./assets/bg-black.jpg);
+}
+
+.auth {
+  @apply bg-no-repeat bg-cover bg-center min-h-screen;
+  background-image: url(./assets/wallpaper.jpeg);
+  color: #ffff;
+}
+
+h1 {
+  font-family: "KanitCyrillic";
+}
+
+h3 {
+  font-family: "CygreSemiBold";
+}
