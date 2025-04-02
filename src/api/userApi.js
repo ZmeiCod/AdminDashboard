@@ -19,14 +19,14 @@ export const login = async (email, password) => {
 
 export const checkToken = async () => {
   try {
-    const { data } = await $authHost.get("api/user/auth");
+    const { data } = await $authHost.post("api/user/refresh");
     localStorage.setItem("token", data.token);
     return jwtDecode(data.token);
   } catch (error) {
     if (error.response && error.response.status === 401) {
       throw new Error('Token expired or invalid');
     }
-    throw error; // обработка других ошибок
+    throw error;
   }
 };
 
@@ -40,5 +40,5 @@ export const startTokenCheck = (currentPath) => {
         window.location.href = "/login";
       }
     }
-  }, 10000); // проверка каждые 10 секунд
+  }, 10000);
 };
