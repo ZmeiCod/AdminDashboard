@@ -14,7 +14,6 @@ export default function Auth() {
 
   const togglePasswordVisibility = () => setShowPassword(!showPassword);
 
-  console.log("API URL:", import.meta.env.VITE_API_URL);
   const click = async () => {
     try {
       let data = await login(email, password);
