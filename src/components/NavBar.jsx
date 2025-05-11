@@ -7,16 +7,12 @@ import { Button, Container } from "react-bootstrap";
 import { observer } from "mobx-react-lite";
 import icon from "../assets/icon.svg";
 import { useNavigate } from "react-router-dom";
-import { ADMIN_ROUTE, LOGIN_ROUTE, SHOP_ROUTE } from "../utils/consts";
+import { ADMIN_ROUTE, LOGIN_ROUTE, ROUTE_HOME } from "../utils/consts";
+
 
 const NavBar = observer(() => {
   const { user } = useContext(Context);
   const history = useNavigate();
-
-  const logOut = () => {
-    user.setUser({});
-    user.setIsAuth(false);
-  };
 
   return (
     <Navbar bg="dark" variant="dark">
@@ -30,7 +26,7 @@ const NavBar = observer(() => {
             <Button
               className="BTN"
               variant={"outline-light"}
-              onClick={() => history(SHOP_ROUTE)}
+              onClick={() => history(ROUTE_HOME)}
             >
               Главная
             </Button>
@@ -44,7 +40,7 @@ const NavBar = observer(() => {
             <Button
               variant={"outline-light"}
               className="ms-4 BTN"
-              onClick={logOut}
+              onClick={() => user.logout()}
             >
               Выйти
             </Button>

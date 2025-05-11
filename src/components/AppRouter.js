@@ -7,17 +7,25 @@ import { observer } from "mobx-react-lite";
 
 const AppRouter = observer(() => {
   const { user } = useContext(Context);
+
+
   return (
     <Routes>
-      {user.isAuth &&
-        authRoutes.map(({ path, Component }) => (
-          <Route key={path} path={path} element={<Component />} exact />
-        ))}
-      {publicRoutes.map(({ path, Component }) => (
-        <Route key={path} path={path} element={<Component />} exact />
+    {/* Если пользователь авторизован, отображаем защищенные маршруты */}
+    {user.isAuth &&
+      authRoutes.map(({ path, Component }) => (
+        <Route key={path} path={path} element={<Component />} />
       ))}
-      <Route path="*" element={<Navigate to={LOGIN_ROUTE} />} />
-    </Routes>
+    
+    {/* Если пользователь не авторизован, отображаем только публичные маршруты */}
+    {!user.isAuth &&
+      publicRoutes.map(({ path, Component }) => (
+        <Route key={path} path={path} element={<Component />} />
+      ))}
+    
+    {/* Редирект на страницу логина, если пользователь не авторизован */}
+    <Route path="*" element={<Navigate to={user.isAuth ? authRoutes[0].path : LOGIN_ROUTE} />} />
+  </Routes>
   );
 });
 

@@ -3,7 +3,7 @@ import Modal from "react-bootstrap/Modal";
 import { Form, Button } from "react-bootstrap";
 import { deleteCategory } from "../../http/productApi";
 import { useNavigate } from "react-router-dom";
-import { SHOP_ROUTE } from "../../utils/consts";
+import { ROUTE_HOME } from "../../utils/consts";
 
 const DeletedCategory = ({ show, onHide }) => {
   const api = process.env.REACT_APP_API_URL;
@@ -43,7 +43,7 @@ const DeletedCategory = ({ show, onHide }) => {
       if (id) {
         await deleteCategory(id);
         console.log("Категория удалена");
-        navigate(SHOP_ROUTE);
+        navigate(ROUTE_HOME);
       } else {
         alert("Категория с таким названием не найдена.");
       }

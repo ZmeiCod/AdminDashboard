@@ -3,7 +3,7 @@ import Modal from "react-bootstrap/Modal";
 import { Form, Button } from "react-bootstrap";
 import { deleteCarousel } from "../../http/productApi";
 import { useNavigate } from "react-router-dom";
-import { SHOP_ROUTE } from "../../utils/consts";
+import { ROUTE_HOME } from "../../utils/consts";
 
 const DeletedSlide = ({ show, onHide }) => {
   const api = process.env.REACT_APP_API_URL;
@@ -43,7 +43,7 @@ const DeletedSlide = ({ show, onHide }) => {
       if (id) {
         await deleteCarousel(id);
         console.log("Слайд удален");
-        navigate(SHOP_ROUTE);
+        navigate(ROUTE_HOME);
       } else {
         alert("Слайд с таким названием не найден.");
       }

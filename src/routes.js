@@ -2,7 +2,7 @@ import {
   ADMIN_ROUTE,
   PRODUCT_ROUTE,
   LOGIN_ROUTE,
-  SHOP_ROUTE,
+  ROUTE_HOME,
 } from "./utils/consts";
 import Admin from "./pages/Admin";
 import Auth from "./pages/Auth";
@@ -11,12 +11,12 @@ import Shop from "./pages/Shop";
 
 export const authRoutes = [
   {
-    path: ADMIN_ROUTE,
-    Component: Admin,
+    path: ROUTE_HOME,
+    Component: Shop,
   },
   {
-    path: SHOP_ROUTE,
-    Component: Shop,
+    path: ADMIN_ROUTE,
+    Component: Admin,
   },
   {
     path: PRODUCT_ROUTE + "/:id",

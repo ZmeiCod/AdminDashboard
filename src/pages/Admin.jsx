@@ -7,6 +7,7 @@ import NavBar from "../components/NavBar";
 import DeletedSlide from "../components/modals/DeletedSlide";
 import DeletedCategory from "../components/modals/DeletedCategory";
 import UpdateCategory from "../components/modals/UpdateCategory";
+import UpdateSlide from "../components/modals/UpdateSlide";
 
 const Admin = () => {
   const [categoryVisible, setCategoryVisible] = useState(false);
@@ -15,6 +16,7 @@ const Admin = () => {
   const [deleteSlideVisible, setDeleteSlideVisible] = useState(false);
   const [deleteCategoryVisible, setDeleteCategoryVisible] = useState(false);
   const [updateCategoryVisible, setUpdateCategoryVisible] = useState(false);
+  const [updateSlideVisible, setUpdateSlideVisible] = useState(false);
 
   return (
     <div>
@@ -60,6 +62,15 @@ const Admin = () => {
         >
           Изменить категорию
         </Button>
+
+        <Button
+          className="admin-page-btn mt-4 p-2"
+          onClick={() => setUpdateSlideVisible(true)}
+        >
+          Обновить слайд
+        </Button>
+
+        <UpdateSlide show={updateSlideVisible} onHide={() => setUpdateSlideVisible(false)}/>
         <UpdateCategory show={updateCategoryVisible}
           onHide={() => setUpdateCategoryVisible(false)}/>
       </Container>

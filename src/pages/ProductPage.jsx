@@ -5,7 +5,7 @@ import { Container, Button, Col, Image, Row } from "react-bootstrap";
 import { useParams } from "react-router-dom";
 import { fetchOneProduct, deleteProduct } from "../http/productApi";
 import { observer } from "mobx-react-lite";
-import { SHOP_ROUTE } from "../utils/consts";
+import { ROUTE_HOME } from "../utils/consts";
 import UpdateProduct from "../components/modals/UpdateProduct";
 
 const ProductPage = observer(() => {
@@ -25,7 +25,7 @@ const ProductPage = observer(() => {
     deleteProduct(id)
       .then((data) => {
         console.log("Продукт удален");
-        navigate(SHOP_ROUTE);
+        navigate(ROUTE_HOME);
       })
       .catch((error) => {
         console.error("Ошибка при удалении продукта: ", error);

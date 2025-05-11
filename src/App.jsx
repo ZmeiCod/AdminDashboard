@@ -1,34 +1,24 @@
-import React, { useContext, useEffect, useState } from "react";
 import "./index.css";
-import { BrowserRouter } from "react-router-dom";
-import AppRouter from "./components/AppRouter";
-import { observer } from "mobx-react-lite";
 import { Context } from "./index";
-import { check } from "./http/userApi";
-import { Spinner } from "react-bootstrap";
+import React from "react";
+import { BrowserRouter } from "react-router-dom";
+import { observer } from "mobx-react-lite";
+import AppRouter from "./components/AppRouter";
 
-const App = observer(() => {
-  const { user } = useContext(Context);
-  const [loading, setLoading] = useState(true);
+const App = () => {
+  const { user } = React.useContext(Context);
 
-  useEffect(() => {
-    check()
-      .then((data) => {
-        user.setUser(true);
-        user.setIsAuth(true);
-      })
-      .finally(() => setLoading(false));
-  });
-
-  if (loading) {
-    return <Spinner animation={"grow"} />;
-  }
+  React.useEffect(() => {
+    if (localStorage.getItem("token")) {
+      user.checkAuth();
+    }
+  }, [user]);
 
   return (
     <BrowserRouter>
       <AppRouter />
     </BrowserRouter>
   );
-});
+};
 
-export default App;
+export default observer(App);

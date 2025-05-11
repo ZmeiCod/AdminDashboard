@@ -1,42 +1,32 @@
-import React, { useState, useContext } from "react";
+import React from "react";
 import { Button, Card, Container, Form, Row } from "react-bootstrap";
 import "../index.css";
-import { login, registration } from "../http/userApi";
+
 import { observer } from "mobx-react-lite";
+// import { useNavigate } from "react-router-dom";
 import { Context } from "../index";
+import { ROUTE_HOME } from "../utils/consts";
 import { useNavigate } from "react-router-dom";
-import { SHOP_ROUTE } from "../utils/consts";
 
 const Auth = observer(() => {
-  const numbers = process.env.REACT_APP_NUMBER;
-  const { user } = useContext(Context);
-  const history = useNavigate();
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [number, setNumber] = useState("");
-  
-  const click = async () => {
+  const navigate = useNavigate();
+
+  const { user } = React.useContext(Context);
+
+  const [email, setEmail] = React.useState("");
+  const [password, setPassword] = React.useState("");
+
+  const login = async () => {
     try {
-      if (number === numbers) {
-        let data = await registration(email, password);
-        if (data) {
-          user.setUser(data);
-          user.setIsAuth(true);
-          history(SHOP_ROUTE);
-        }
-      } else {
-        let data = await login(email, password);
-        if (data) {
-          user.setUser(data);
-          user.setIsAuth(true);
-          history(SHOP_ROUTE);
-        }
+      let data = user.login(email, password)
+      if (data) {
+        navigate(ROUTE_HOME)
       }
     } catch (e) {
-      alert(e.response?.data?.message || "Произошла ошибка");
+      console.log(e)
     }
-  };
-
+  }
+  
   return (
     <Container
       className="d-flex justify-content-center align-items-center"
@@ -58,17 +48,15 @@ const Auth = observer(() => {
             onChange={(e) => setPassword(e.target.value)}
             type="password"
           />
-          <Form.Control
-            className="mt-3 form-control-custom"
-            value={number}
-            onChange={(e) => setNumber(e.target.value)}
-            type="password"
-          />
           <Row
             className="d-flex justify-content-center mt-3 pl-3 pr-3"
             style={{ marginRight: 0, marginLeft: 0 }}
           >
-            <Button className="BTN" onClick={click} variant={"outline-none"}>
+            <Button
+              className="BTN"
+              onClick={login}
+              variant={"outline-none"}
+            >
               Войти
             </Button>
           </Row>

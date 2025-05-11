@@ -1,4 +1,4 @@
-import { $authHost, $host } from "./index";
+import { $api, $authHost} from "./index";
 
 export const createCategory = async (category) => {
   const { data } = await $authHost.post("api/category", category);
@@ -6,12 +6,12 @@ export const createCategory = async (category) => {
 };
 
 export const fetchCategories = async () => {
-  const { data } = await $host.get("api/category");
+  const { data } = await $api.get("api/category");
   return data;
 };
 
 export const fetchOneCategory = async (id) => {
-  const { data } = await $host.get("api/category/" + id);
+  const { data } = await $api.get("api/category/" + id);
   return data;
 };
 
@@ -27,17 +27,17 @@ export const deleteCategory = async (id) => {
 
 
 export const createProduct = async (product) => {
-  const { data } = await $authHost.post("api/product", product);
+  const { data } = await  $authHost.post("api/product", product);
   return data;
 };
 
 export const deleteProduct = async (id) => {
-  const { data } = await $authHost.delete(`api/product/${id}`);
+  const { data } = await  $authHost.delete(`api/product/${id}`);
   return data;
 };
 
 export const fetchProducts = async (categoryId) => {
-  const { data } = await $host.get("api/product", {
+  const { data } = await $api.get("api/product", {
     params: {
       categoryId,
     },
@@ -46,7 +46,7 @@ export const fetchProducts = async (categoryId) => {
 };
 
 export const fetchOneProduct = async (id) => {
-  const { data } = await $host.get("api/product/" + id);
+  const { data } = await $api.get("api/product/" + id);
   return data;
 };
 
@@ -62,9 +62,14 @@ export const createCarousel = async (carousel) => {
 };
 
 export const fetchCarousels = async () => {
-  const { data } = await $host.get("api/carousel");
+  const { data } = await $api.get("api/carousel");
   return data;
 };
+
+export const updateSlide = async (id, formData) => {
+  const { data } = await $authHost.put(`api/carousel/${id}`, formData);
+  return data;
+}
 
 export const deleteCarousel = async (id) => {
   const { data } = await $authHost.delete(`api/carousel/${id}`);
