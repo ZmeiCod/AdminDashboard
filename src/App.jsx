@@ -1,8 +1,7 @@
-import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import "./index.css";
 import Auth from "./pages/Auth";
 import Home from "./pages/Home";
-
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 export default function App() {
   return (

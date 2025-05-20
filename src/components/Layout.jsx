@@ -2,7 +2,9 @@ import React from "react";
 import { RiLogoutBoxLine } from "react-icons/ri";
 import { FaTachometerAlt, FaUsers, FaBox, FaCog } from "react-icons/fa";
 import { ROUTE_LOGIN } from "../utils/consts";
+import  AuthService  from "../api/userApi";
 import { useNavigate } from "react-router-dom";
+import UserService from "../api/functionAPI";
 
 const menuItems = [
   { icon: <FaTachometerAlt />, label: "Главная" },
@@ -13,6 +15,28 @@ const menuItems = [
 
 export default function Layout({ onSelectCategory }) {
   const navigate = useNavigate();
+
+
+  const click = async () => {
+    try {
+      let data = await UserService.fetchUsers();
+      console.log(data.data)
+    } catch (e) {
+      alert(e.response?.data?.message || "Произошла ошибка");
+    }
+  };
+
+
+  const exit = async () => {
+    try {
+      let data = await AuthService.logout();
+      if (data) {
+        navigate(ROUTE_LOGIN);
+      }
+    } catch (e) {
+      alert(e.response?.data?.message || "Произошла ошибка");
+    }
+  };
 
   return (
     <div className="bg-gray-100 text-gray-900 h-screen px-4 fixed w-16 md:w-64 border-r border-gray-300 dark:border-orange-400 dark:bg-neutral-800 dark:text-white flex flex-col justify-between">
@@ -40,7 +64,7 @@ export default function Layout({ onSelectCategory }) {
         <div className="mt-5">
           <h3 className="text-lg font-semibold mb-2">Настройки</h3>
           <ul className="flex flex-col text-xl">
-            <li className="flex items-center py-3 px-2 space-x-4 hover:rounded hover:cursor-pointer hover:bg-neutral-600 hover:text-white">
+            <li onClick={click} className="flex items-center py-3 px-2 space-x-4 hover:rounded hover:cursor-pointer hover:bg-neutral-600 hover:text-white">
               <FaUsers />
               <span className="hidden md:inline">Пользователи</span>
             </li>
@@ -55,7 +79,7 @@ export default function Layout({ onSelectCategory }) {
       <ul className="flex flex-col mt-5 text-xl">
         <li
           className="flex items-center py-3 px-2 space-x-4 mb-6 hover:rounded hover:cursor-pointer hover:bg-neutral-600 hover:text-white"
-          onClick={() => navigate(ROUTE_LOGIN)}
+          onClick={exit}
         >
           <RiLogoutBoxLine />
           <span className="hidden md:inline">Выйти</span>

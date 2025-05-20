@@ -1,13 +1,17 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
 import logo from "../assets/icon.svg";
+import  AuthService  from "../api/userApi";
+import { ROUTE_HOME } from "../utils/consts";
+import { useNavigate } from "react-router-dom";
 import { MdAlternateEmail } from "react-icons/md";
 import { FaFingerprint, FaRegEye, FaRegEyeSlash } from "react-icons/fa";
-import { ROUTE_HOME } from "../utils/consts";
-import { login } from "../api/userApi";
+import { Context } from "..";
 
 export default function Auth() {
+
   const navigate = useNavigate();
+  const { UserStore } = React.useContext(Context)
+
   const [email, setEmail] = React.useState("");
   const [password, setPassword] = React.useState("");
   const [showPassword, setShowPassword] = React.useState(false);
@@ -16,7 +20,8 @@ export default function Auth() {
 
   const click = async () => {
     try {
-      let data = await login(email, password);
+      let data = await AuthService.login(email, password);
+      console.log(data)
       if (data) {
         navigate(ROUTE_HOME);
       }
@@ -68,7 +73,7 @@ export default function Auth() {
         </div>
 
         <button
-          onClick={click}
+          onClick={(click)}
           className="w-full p-2 border border-orange-500 rounded-xl mt-3 text-orange-500 hover:bg-orange-500 hover:text-white text-sm ls:text-base transition duration-200"
         >
           Войти
