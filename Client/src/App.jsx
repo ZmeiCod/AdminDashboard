@@ -1,11 +1,11 @@
 import "./index.css";
-import { Context } from "./index";
+import { Context } from "./main.jsx";
 import React from "react";
 import { BrowserRouter } from "react-router-dom";
 import { observer } from "mobx-react-lite";
-import AppRouter from "./components/AppRouter";
+import AppRouter from "./AppRouter.jsx";
 
-const App = () => {
+const App = observer(() => {
   const { user } = React.useContext(Context);
 
   React.useEffect(() => {
@@ -19,6 +19,7 @@ const App = () => {
       <AppRouter />
     </BrowserRouter>
   );
-};
+});
 
-export default observer(App);
+export default App;
+

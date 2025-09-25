@@ -1,8 +1,10 @@
 import axios from "axios";
 
+const apiUrl = process.env.REACT_APP_API_URL;
+
 const $api = axios.create({
   withCredentials: true,
-  baseURL: process.env.REACT_APP_API_URL,
+  baseURL: apiUrl,
 });
 
 $api.interceptors.request.use((config) => {
@@ -11,7 +13,7 @@ $api.interceptors.request.use((config) => {
 });
 
 const $authHost = axios.create({
-  baseURL: process.env.REACT_APP_API_URL,
+  baseURL: apiUrl,
   headers: {
     authorization: `Bearer ${localStorage.getItem("token")}`,
   },
@@ -36,7 +38,7 @@ $api.interceptors.response.use(
       originalRequest._isRetry = true;
       try {
         const response = await axios.get(
-          `${process.env.REACT_APP_API_URL}api/user/refresh`,
+          `${apiUrl}api/user/refresh`,
           { withCredentials: true }
         );
         localStorage.setItem("token", response.data.accessToken);

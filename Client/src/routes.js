@@ -1,23 +1,20 @@
-import {
-  ADMIN_ROUTE,
-  LOGIN_ROUTE,
-  ROUTE_HOME,
-} from "./utils/consts";
-import Admin from "./pages/Admin";
 import Auth from "./pages/Auth";
-import Shop from "./pages/Shop";
+import Home from "./pages/Home";
 
+// Константы маршрутов
+export const ROUTE_HOME = "/home";
+export const LOGIN_ROUTE = "/login";
+
+// Маршруты для аутентифицированных пользователей
 export const authRoutes = [
   {
     path: ROUTE_HOME,
-    Component: Shop,
+    Component: Home,
   },
-  {
-    path: ADMIN_ROUTE,
-    Component: Admin,
-  },
+
 ];
 
+// Публичные маршруты
 export const publicRoutes = [
   {
     path: LOGIN_ROUTE,
