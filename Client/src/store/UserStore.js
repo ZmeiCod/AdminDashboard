@@ -2,6 +2,8 @@ import axios from "axios";
 import { makeAutoObservable } from "mobx";
 import AuthService from "../services/AuthService";
 
+const apiUrl = import.meta.env.VITE_API_URL;
+
 // Класс для управления состоянием пользователя
 export default class UserStore {
   // Инициализация состояния
@@ -67,10 +69,9 @@ export default class UserStore {
   async checkAuth() {
     this.setLoading(true);
     try {
-      const response = await axios.get(
-        `${process.env.REACT_APP_API_URL}api/user/refresh`,
-        { withCredentials: true }
-      );
+      const response = await axios.get(`${apiUrl}api/user/refresh`, {
+        withCredentials: true,
+      });
       localStorage.setItem("token", response.data.accessToken);
       this.setAuth(true);
       this.setUser(response.data.user);

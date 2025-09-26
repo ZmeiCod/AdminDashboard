@@ -4,7 +4,7 @@ import "../index.css";
 
 import { observer } from "mobx-react-lite";
 
-import { Context } from "../main.jsx";
+import { Context } from "../Main.jsx";
 import { ROUTE_HOME } from "../routes.js";
 import { useNavigate } from "react-router-dom";
 

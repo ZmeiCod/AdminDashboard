@@ -1,4 +1,4 @@
-import {$api} from "../http/index";
+import {$api} from "./ApiService";
 
 export default class AuthService {
   // Запрос на регистрацию пользователя

@@ -1,4 +1,4 @@
-import $api from "../http/index";
+import {$api} from "./ApiService";
 
 // Класс для управления пользовательским
 export default class UserService {
