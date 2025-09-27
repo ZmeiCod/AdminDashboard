@@ -69,7 +69,7 @@ export default class UserStore {
   async checkAuth() {
     this.setLoading(true);
     try {
-      const response = await axios.get(`${apiUrl}api/user/refresh`, {
+      const response = await axios.get(`${apiUrl}/api/user/refresh`, {
         withCredentials: true,
       });
       localStorage.setItem("token", response.data.accessToken);
@@ -77,6 +77,7 @@ export default class UserStore {
       this.setUser(response.data.user);
     } catch (e) {
       console.log(e);
+      console.log(`${apiUrl}api/user/refresh`);
     } finally {
       this.setLoading(false);
     }

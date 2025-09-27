@@ -8,8 +8,11 @@ const Shop = observer(() => {
 
 
   return (
-    <div>
+    <div className="wrapper">
       <Sidebar/>
+      <div className="main">
+        
+      </div>
     </div>
   );
 });

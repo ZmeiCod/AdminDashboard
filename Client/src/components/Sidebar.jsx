@@ -1,124 +1,104 @@
 import React from "react";
+import { Context } from "../Main";
+import ChevronsRight from "../assets/ui/ChevronsRight.svg";
+import ChevronsLeft from "../assets/ui/ChevronsLeft.svg";
+import Graph from "../assets/ui/Graph.svg";
+import Profile from "../assets/ui/Profile.svg";
+
+import Security from "../assets/ui/Security.svg";
+import Setting from "../assets/ui/Settings.svg";
+
+import Exit from "../assets/ui/Exit.svg";
 
 export default function Sidebar() {
+  const { user } = React.useContext(Context);
+  const [isExpanded, setIsExpanded] = React.useState(true);
+
+  const toggleSidebar = () => {
+    setIsExpanded(!isExpanded);
+  };
+
   return (
-    <aside id="sidebar">
+    <aside id="sidebar" className={isExpanded ? "expand" : ""}>
       <div className="d-flex justify-content-between p-4">
-        <div className="sidebar-logo">
-          <a href="#">AdminDash</a>
-        </div>
-        <button className="toggle-btn border-0" type="button">
-          <i id="icon" className="bx bxs-chevrons-right"> """ </i>
+        {isExpanded && (
+          <div className="sidebar-logo">
+            <a href="#">AdminDash</a>
+          </div>
+        )}
+        <button
+          className="toggle-btn border-0"
+          type="button"
+          onClick={toggleSidebar}
+        >
+          <img
+            src={isExpanded ? ChevronsLeft : ChevronsRight}
+            alt="Toggle"
+            className="icon"
+          />
         </button>
       </div>
 
-      {/* <ul class="sidebar-nav">
-        <li class="sidebar-item">
-          <a href="#" class="sidebar-link">
-            <i class="lni lni-user"></i>
-            <span>Profile</span>
+      <ul className="sidebar-nav">
+        <li className="sidebar-item">
+          <a href="#" className="sidebar-link">
+            <img src={Profile} alt="Toggle" className="icon" />
+            {isExpanded && <span>Профиль</span>}
           </a>
         </li>
-        <li class="sidebar-item">
-          <a href="#" class="sidebar-link">
-            <i class="lni lni-agenda"></i>
-            <span>Task</span>
+
+        <li className="sidebar-item">
+          <a href="#" className="sidebar-link">
+            <img src={Graph} alt="Toggle" className="icon" />
+            {isExpanded && <span>Главная</span>}
           </a>
         </li>
-        <li class="sidebar-item">
+
+        <li className="sidebar-item">
           <a
             href="#"
-            class="sidebar-link collapsed has-dropdown"
+            className="sidebar-link collapsed has-dropdown"
             data-bs-toggle="collapse"
             data-bs-target="#auth"
             aria-expanded="false"
             aria-controls="auth"
           >
-            <i class="lni lni-protection"></i>
-            <span>Auth</span>
+            <img src={Security} alt="Toggle" className="icon" />
+            {isExpanded && <span>Безопасность</span>}
           </a>
           <ul
             id="auth"
-            class="sidebar-dropdown list-unstyled collapse"
+            className="sidebar-dropdown list-unstyled collapse"
             data-bs-parent="#sidebar"
           >
-            <li class="sidebar-item">
-              <a href="#" class="sidebar-link">
-                Login
+            <li className="sidebar-item">
+              <a href="#" className="sidebar-link">
+                Пользователи
               </a>
             </li>
-            <li class="sidebar-item">
-              <a href="#" class="sidebar-link">
-                Register
+            <li className="sidebar-item">
+              <a href="#" className="sidebar-link">
+                Регистрация
               </a>
             </li>
           </ul>
         </li>
-        <li class="sidebar-item">
-          <a
-            href="#"
-            class="sidebar-link collapsed has-dropdown"
-            data-bs-toggle="collapse"
-            data-bs-target="#multi"
-            aria-expanded="false"
-            aria-controls="multi"
-          >
-            <i class="lni lni-layout"></i>
-            <span>Multi Level</span>
-          </a>
-          <ul
-            id="multi"
-            class="sidebar-dropdown list-unstyled collapse"
-            data-bs-parent="#sidebar"
-          >
-            <li class="sidebar-item">
-              <a
-                href="#"
-                class="sidebar-link collapsed"
-                data-bs-toggle="collapse"
-                data-bs-target="#multi-two"
-                aria-expanded="false"
-                aria-controls="multi-two"
-              >
-                Two Links
-              </a>
-              <ul
-                id="multi-two"
-                class="sidebar-dropdown list-unstyled collapse"
-              >
-                <li class="sidebar-item">
-                  <a href="#" class="sidebar-link">
-                    Link 1
-                  </a>
-                </li>
-                <li class="sidebar-item">
-                  <a href="#" class="sidebar-link">
-                    Link 2
-                  </a>
-                </li>
-              </ul>
-            </li>
-          </ul>
-        </li>
-        <li class="sidebar-item">
-          <a href="#" class="sidebar-link">
-            <i class="lni lni-popup"></i>
-            <span>Notification</span>
-          </a>
-        </li>
-        <li class="sidebar-item">
-          <a href="#" class="sidebar-link">
-            <i class="lni lni-cog"></i>
-            <span>Setting</span>
+
+        <li className="sidebar-item">
+          <a href="#" className="sidebar-link">
+            <img src={Setting} alt="Toggle" className="icon" />
+            {isExpanded && <span>Настройки</span>}
           </a>
         </li>
       </ul>
-      <div class="sidebar-footer">
-        <a href="#" class="sidebar-link">
-          <i class="lni lni-exit"></i>
-          <span>Logout</span>
+
+      <div className="sidebar-footer">
+        <a className="sidebar-link" onClick={() => user.logout()}>
+          <img src={Exit} alt="Toggle" className="icon" />
+
+          {isExpanded && <span>Logout</span>}
         </a>
-      </div> */}
+      </div>
     </aside>
   );
 }
