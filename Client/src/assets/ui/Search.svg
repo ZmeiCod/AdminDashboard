@@ -1,0 +1,14 @@
+<svg viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="20.000000" height="20.000000" fill="none">
+	<defs>
+		<clipPath id="clipPath_0">
+			<rect width="100.000000" height="100.000000" x="-36.000000" y="-41.000000" fill="rgb(255,255,255)" />
+		</clipPath>
+	</defs>
+	<rect id="Поиск 1" width="20.000000" height="20.000000" x="0.000000" y="0.000000" />
+	<g id="фрейм 1" clip-path="url(#clipPath_0)" customFrame="url(#clipPath_0)">
+		<rect id="фрейм 1" width="100.000000" height="100.000000" x="-36.000000" y="-41.000000" />
+		<path id="Форма 45" d="M15.8333 8.74999C15.8333 4.83799 12.662 1.66666 8.74996 1.66666C4.83796 1.66666 1.66663 4.83799 1.66663 8.74999C1.66663 12.662 4.83796 15.8333 8.74996 15.8333C12.662 15.8333 15.8333 12.662 15.8333 8.74999Z" fill-rule="nonzero" stroke="rgb(255,255,255)" stroke-linejoin="round" stroke-width="1.5" />
+		<path id="Форма 46" d="M11.1071 5.97629C10.5039 5.37308 9.67057 5 8.75007 5C7.82961 5 6.99627 5.37308 6.39307 5.97629" fill-rule="nonzero" stroke="rgb(255,255,255)" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" />
+		<path id="Форма 47" d="M13.8423 13.8424L17.3778 17.3779" stroke="rgb(255,255,255)" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" />
+	</g>
+</svg>

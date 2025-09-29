@@ -7,11 +7,13 @@ import Profile from "../assets/ui/Profile.svg";
 
 import Security from "../assets/ui/Security.svg";
 import Setting from "../assets/ui/Settings.svg";
-
+import { ROUTE_HOME } from "../routes.js";
+import { useNavigate } from "react-router-dom";
 import Exit from "../assets/ui/Exit.svg";
 
 export default function Sidebar() {
   const { user } = React.useContext(Context);
+  const navigate = useNavigate();
   const [isExpanded, setIsExpanded] = React.useState(true);
 
   const toggleSidebar = () => {
@@ -72,7 +74,7 @@ export default function Sidebar() {
             data-bs-parent="#sidebar"
           >
             <li className="sidebar-item">
-              <a href="#" className="sidebar-link">
+              <a href="/Users" className="sidebar-link" onClick={navigate(ROUTE_HOME)}>
                 Пользователи
               </a>
             </li>
@@ -96,7 +98,7 @@ export default function Sidebar() {
         <a className="sidebar-link" onClick={() => user.logout()}>
           <img src={Exit} alt="Toggle" className="icon" />
 
-          {isExpanded && <span>Logout</span>}
+          {isExpanded && <span>Выйти</span>}
         </a>
       </div>
     </aside>

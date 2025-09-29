@@ -3,6 +3,8 @@ import "../index.css";
 import { observer } from "mobx-react-lite";
 
 import Sidebar from "../components/Sidebar";
+import Navbar from "../components/Navbar";
+import Graph from "../components/Graph";
 
 const Shop = observer(() => {
 
@@ -11,7 +13,8 @@ const Shop = observer(() => {
     <div className="wrapper">
       <Sidebar/>
       <div className="main">
-        
+        <Navbar/>
+        <Graph/>
       </div>
     </div>
   );
