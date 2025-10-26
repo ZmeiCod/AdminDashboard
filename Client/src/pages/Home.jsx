@@ -6,18 +6,16 @@ import Sidebar from "../components/Sidebar";
 import Navbar from "../components/Navbar";
 import Graph from "../components/Graph";
 
-const Shop = observer(() => {
-
-
+const Home = observer(() => {
   return (
     <div className="wrapper">
-      <Sidebar/>
+      <Sidebar />
       <div className="main">
-        <Navbar/>
-        <Graph/>
+        <Navbar />
+        <Graph />
       </div>
     </div>
   );
 });
 
-export default Shop;
+export default Home;

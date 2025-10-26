@@ -8,6 +8,7 @@ import Profile from "../assets/ui/Profile.svg";
 import Security from "../assets/ui/Security.svg";
 import Setting from "../assets/ui/Settings.svg";
 import { ROUTE_HOME } from "../routes.js";
+import { USERS_ROUTE } from "../routes.js";
 import { useNavigate } from "react-router-dom";
 import Exit from "../assets/ui/Exit.svg";
 
@@ -50,7 +51,7 @@ export default function Sidebar() {
         </li>
 
         <li className="sidebar-item">
-          <a href="#" className="sidebar-link">
+          <a href="#" className="sidebar-link"  onClick={() => navigate(ROUTE_HOME)}>
             <img src={Graph} alt="Toggle" className="icon" />
             {isExpanded && <span>Главная</span>}
           </a>
@@ -74,7 +75,10 @@ export default function Sidebar() {
             data-bs-parent="#sidebar"
           >
             <li className="sidebar-item">
-              <a href="/Users" className="sidebar-link" onClick={navigate(ROUTE_HOME)}>
+              <a
+                className="sidebar-link"
+                onClick={() => navigate(USERS_ROUTE)}
+              >
                 Пользователи
               </a>
             </li>

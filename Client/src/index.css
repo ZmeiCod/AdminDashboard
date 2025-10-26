@@ -156,30 +156,31 @@ a.sidebar-link:hover {
   transition: all 0.5s;
 }
 
-/* ВНИМАНИЕ СЮДА */
-/* ВНИМАНИЕ СЮДА */
-/* ВНИМАНИЕ СЮДА */
-/* ВНИМАНИЕ СЮДА */
+.sidebar-dropdown a.sidebar-link {
+  padding-left: 3.8rem;
+  color: #fff;
+  position: relative;
+  transition: color 0.4s;
+}
 
-.sidebar-dropdown a.sidebar-link::before{
+.sidebar-dropdown a.sidebar-link::before {
   content: '';
   height: 0.125rem;
   width: 0.375rem;
-  background-color: #ffffff80 ;
-
+  background-color: #ffffff80;
   position: absolute;
   left: 1.8rem;
   top: 50%;
   transform: translateY(-50%);
-  transition: all 0.5s;
+  transition: background-color 0.5s;
 }
 
-.sidebar-dropdown a.sidebar-link:hover{
-  background: transparent;
-  border-left: 3px solid transparent;
-  padding-left: 3.8rem;
+.sidebar-dropdown a.sidebar-link:hover {
   color: #3b7ddd;
-  transition: all 0.4s;
+}
+
+.sidebar-dropdown a.sidebar-link:hover::before {
+  background-color: #3b7ddd;
 }
 
 .navbar {
